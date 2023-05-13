@@ -76,7 +76,7 @@ class AddMorestate extends State {
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 160,
-              child: const Card(
+              child:  Card(
                 elevation: 5,
                 child: Column(
                   children: <Widget>[
@@ -90,9 +90,9 @@ class AddMorestate extends State {
               ),
             ),
           ),
-          const Spacer(
-            flex: 2,
-          ),
+          // const Spacer(
+          //   flex: 2,
+          // ),
         ],
       ),
     );

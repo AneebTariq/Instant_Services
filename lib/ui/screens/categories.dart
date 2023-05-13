@@ -121,7 +121,7 @@ class Appcategoriesstate extends State {
             borderRadius: BorderRadius.circular(10),
           ),
           elevation: 15,
-          child: const Padding(
+          child:  Padding(
             padding: EdgeInsets.all(25.0),
             child: Center(
               child: Column(
