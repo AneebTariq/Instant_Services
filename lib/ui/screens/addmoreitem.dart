@@ -76,10 +76,10 @@ class AddMorestate extends State {
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 160,
-              child: Card(
+              child: const Card(
                 elevation: 5,
                 child: Column(
-                  children: const <Widget>[
+                  children: <Widget>[
                     ListTile(
                       title: Text('Title'),
                       subtitle: Text('data'),

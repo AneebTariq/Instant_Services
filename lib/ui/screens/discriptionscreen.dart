@@ -87,15 +87,38 @@ class Detailstate extends State {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 SizedBox(
-                  child: Card(
-                    elevation: 15,
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
-                        Icons.image,
-                        color: Colors.grey,
-                        size: 40,
-                      ),
+                  child: GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                            ),
+                            title: ListTile(
+                              leading: const Icon(Icons.camera),
+                              title: const Text('Open camera'),
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            content: ListTile(
+                              leading: const Icon(Icons.browse_gallery_rounded),
+                              title: const Text('Open gallery'),
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            actions: const [],
+                          );
+                        },
+                      );
+                    },
+                    child: const Icon(
+                      Icons.image,
+                      color: Colors.grey,
+                      size: 40,
                     ),
                   ),
                 ),

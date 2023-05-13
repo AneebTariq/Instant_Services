@@ -23,14 +23,7 @@ class Myhomestate extends State {
           backgroundColor: Colors.green,
         ),
 // user profile drawer
-        drawer: const Drawer(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
-          ),
-        ),
+        drawer: const Drawer(),
 // Bottom Navigation bar
         bottomNavigationBar: const Mynavbar(),
 //screen body
