@@ -34,7 +34,7 @@ class SplashScreenState extends State {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Image.asset('assets/image/1.png'),
+                child: Image.asset('assets/image/1st_logo.png'),
               ),
             ),
             const Spacer(),

@@ -111,8 +111,7 @@ class Appcategoriesstate extends State {
   Widget _catagoritem() {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Detail()));
+        Get.to(() => const Detail());
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -122,11 +121,11 @@ class Appcategoriesstate extends State {
             borderRadius: BorderRadius.circular(10),
           ),
           elevation: 15,
-          child: Padding(
-            padding: const EdgeInsets.all(25.0),
+          child: const Padding(
+            padding: EdgeInsets.all(25.0),
             child: Center(
               child: Column(
-                children: const <Widget>[
+                children: <Widget>[
                   Icon(Icons.person),
                   Text('Aneeb'),
                 ],

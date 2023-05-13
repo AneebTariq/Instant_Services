@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instant_services/ui/screens/formscreen.dart';
+
+import 'datetime.dart';
 
 class Order extends StatelessWidget {
   const Order({super.key});
@@ -33,12 +36,7 @@ class Order extends StatelessWidget {
                             backgroundColor: Colors.green,
                           ),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Formdetail(),
-                              ),
-                            );
+                            Get.to(() => Formdetail());
                           },
                           child: const Text(
                             'Now ',
@@ -58,7 +56,9 @@ class Order extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.greenAccent,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => const DateandTime());
+                          },
                           child: const Text(
                             'Schedule for later ',
                             style: TextStyle(
@@ -70,12 +70,12 @@ class Order extends StatelessWidget {
                       )
                     ]))),
 //screen body
-        body: const Padding(
-          padding: EdgeInsets.only(left: 30, right: 20, bottom: 50),
-          child: Center(
+        body: const Center(
+          child: Padding(
+            padding: EdgeInsets.only(left: 30, right: 20, bottom: 50),
             child: Text(
               'When would you like us to send Technician?',
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30, fontStyle: FontStyle.italic),
             ),
           ),
         ));

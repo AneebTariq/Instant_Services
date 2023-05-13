@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'finishscreen.dart';
 
 class Formdetail extends StatelessWidget {
   Formdetail({super.key});
@@ -23,7 +26,9 @@ class Formdetail extends StatelessWidget {
               'Continue',
               style: TextStyle(fontSize: 20),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const FinishingScreen());
+            },
           )),
 //Appbar
       appBar: AppBar(

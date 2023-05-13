@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:instant_services/ui/screens/discriptionscreen.dart';
 
 class Viewall extends StatelessWidget {
   const Viewall({super.key});
@@ -27,7 +29,9 @@ class Viewall extends StatelessWidget {
           itemCount: 11,
           itemBuilder: (BuildContext ctx, index) {
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const Detail());
+              },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Card(
@@ -36,14 +40,11 @@ class Viewall extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   elevation: 15,
-                  child: Padding(
-                    padding: const EdgeInsets.all(25.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(25.0),
                     child: Center(
                       child: Column(
-                        children: const <Widget>[
-                          Icon(Icons.person),
-                          Text('Aneeb')
-                        ],
+                        children: <Widget>[Icon(Icons.person), Text('Aneeb')],
                       ),
                     ),
                   ),

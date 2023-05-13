@@ -57,7 +57,7 @@ class Detailstate extends State {
         children: <Widget>[
 //Text Field for Discreption
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(left: 20.0, top: 15, right: 20),
             child: TextFormField(
               maxLines: null,
               minLines: 6,
@@ -78,7 +78,7 @@ class Detailstate extends State {
           const Center(child: Icon(Icons.person)),
 //Add Image option
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(left: 20, bottom: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
