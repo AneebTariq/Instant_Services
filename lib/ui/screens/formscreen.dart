@@ -41,6 +41,11 @@ class Formdetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+//Text field for city
+            const SizedBox(
+              height: 10,
+            ),
+            _textfields('City'),
 // Text field for area
             const SizedBox(
               height: 10,

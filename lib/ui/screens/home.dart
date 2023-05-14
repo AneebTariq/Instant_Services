@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_services/ui/screens/categories.dart';
+import 'package:instant_services/ui/widgets/drawer.dart';
 import 'package:instant_services/ui/widgets/navbar.dart';
 
 class Myhome extends StatefulWidget {
@@ -23,7 +24,7 @@ class Myhomestate extends State {
           backgroundColor: Colors.green,
         ),
 // user profile drawer
-        drawer: const Drawer(),
+        drawer: mydrawer,
 // Bottom Navigation bar
         bottomNavigationBar: const Mynavbar(),
 //screen body
@@ -32,7 +33,7 @@ class Myhomestate extends State {
 // Search bar
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
+                horizontal: 10.0,
                 vertical: 15.0,
               ),
               child: TextField(
