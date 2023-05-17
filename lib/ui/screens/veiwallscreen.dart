@@ -40,7 +40,7 @@ class Viewall extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   elevation: 15,
-                  child:  Padding(
+                  child:  const Padding(
                     padding: EdgeInsets.all(25.0),
                     child: Center(
                       child: Column(

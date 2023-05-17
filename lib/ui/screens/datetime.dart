@@ -12,6 +12,34 @@ class DateandTime extends StatefulWidget {
 }
 
 class DateandTimestate extends State {
+  //Date picker
+  DateTime datetime = DateTime.now();
+  void _selectdate() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    ).then((value) {
+      setState(() {
+        datetime = value!;
+      });
+    });
+  }
+
+  //Time picker
+  TimeOfDay mytime = TimeOfDay.now();
+  void _timepicker() {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((value) {
+      setState(() {
+        mytime = value!;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 //Item lists
@@ -20,6 +48,7 @@ class DateandTimestate extends State {
         title: const Text('Date And Time'),
         backgroundColor: Colors.green,
       ),
+      //botum sheet
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -50,9 +79,53 @@ class DateandTimestate extends State {
           ),
         ),
       ),
-      body:  Column(
-        children: <Widget>[Text('Date and Time')],
-      ),
+      body: Column(children: <Widget>[
+        const SizedBox(
+          height: 30,
+        ),
+        //time picker
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          child: Card(
+            elevation: 10,
+            child: ListTile(
+              leading: const Icon(
+                Icons.timer,
+                color: Colors.green,
+              ),
+              title: Text("${mytime.hour}:${mytime.minute}"),
+              trailing: ElevatedButton(
+                onPressed: _timepicker,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: const Text('Select Time'),
+              ),
+            ),
+          ),
+        ),
+        //Date card
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          child: Card(
+            elevation: 10,
+            child: ListTile(
+              leading: const Icon(
+                Icons.calendar_month,
+                color: Colors.green,
+              ),
+              title: Text("${datetime.day}/${datetime.month}/${datetime.year}"),
+              trailing: ElevatedButton(
+                onPressed: _selectdate,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                ),
+                child: const Text('Select Date'),
+              ),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }

@@ -20,18 +20,18 @@ class Mynavbarstate extends State {
           color: Colors.green,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(5), topRight: Radius.circular(5))),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10.0),
+      child: const Padding(
+        padding: EdgeInsets.only(top: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,
               ),
               child: Column(
-                children: const <Widget>[
+                children: <Widget>[
                   Icon(
                     Icons.home,
                     color: Colors.white,
@@ -49,12 +49,12 @@ class Mynavbarstate extends State {
             ),
             // about us
             Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,
               ),
               child: Column(
-                children: const <Widget>[
+                children: <Widget>[
                   Icon(
                     Icons.person,
                     color: Colors.white,
@@ -72,12 +72,12 @@ class Mynavbarstate extends State {
             ),
             // All services
             Padding(
-              padding: const EdgeInsets.symmetric(
+              padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,
               ),
               child: Column(
-                children: const <Widget>[
+                children: <Widget>[
                   Icon(
                     Icons.category_outlined,
                     color: Colors.white,

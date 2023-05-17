@@ -29,12 +29,13 @@ class InstantServices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       title: 'Instant Services',
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
+      home: const SafeArea(
         child: SplashScreen(),
       ),
+      theme: ThemeData(primarySwatch: Colors.green),
     );
   }
 }
