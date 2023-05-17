@@ -1,82 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:instant_services/models/services_model.dart';
 import 'package:instant_services/ui/screens/discriptionscreen.dart';
 import 'package:instant_services/ui/screens/veiwallscreen.dart';
 
-class Appcategories extends StatefulWidget {
-  const Appcategories({super.key});
+
+
+class ServiceSection extends StatefulWidget {
+  final ServiceModel service;
+  const ServiceSection({Key? key,required this.service}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return Appcategoriesstate();
-  }
+  State<ServiceSection> createState() => _CategorySectionState();
 }
 
-class Appcategoriesstate extends State {
+class _CategorySectionState extends State<ServiceSection> {
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
 // maintanence
-        _category("Maintanence", "view All"),
+        _category(widget.service.name, "view All"),
         SizedBox(
           height: 140.0,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: widget.service.product.length,
             itemBuilder: (BuildContext context, int index) {
-              return _catagoritem();
+              return _catagoritem(widget.service.product[index]);
             },
           ),
         ),
-// Cleaning
-        _category("Cleaning", "View All"),
-        SizedBox(
-          height: 140.0,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index) {
-              return _catagoritem();
-            },
-          ),
-        ),
-// Home improvment
-        _category('Home Improvement', 'view All'),
-        SizedBox(
-          height: 140.0,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index) {
-              return _catagoritem();
-            },
-          ),
-        ),
-//Security
-        _category('Security & CCTV', 'view All'),
-        SizedBox(
-          height: 140.0,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index) {
-              return _catagoritem();
-            },
-          ),
-        ),
-// other services
-        _category('Other Services', 'view All'),
-        SizedBox(
-          height: 140.0,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index) {
-              return _catagoritem();
-            },
-          ),
-        ),
+
       ],
     );
   }
@@ -108,7 +64,7 @@ class Appcategoriesstate extends State {
     );
   }
 
-  Widget _catagoritem() {
+  Widget _catagoritem(Product product) {
     return GestureDetector(
       onTap: () {
         Get.to(() => const Detail());
@@ -126,8 +82,11 @@ class Appcategoriesstate extends State {
             child: Center(
               child: Column(
                 children: <Widget>[
-                  Icon(Icons.person),
-                  Text('Aneeb'),
+                  Image.network(product.productImage,
+                  height: 20,
+                    width: 20,
+                  ),
+                  Text(product.productName),
                 ],
               ),
             ),
