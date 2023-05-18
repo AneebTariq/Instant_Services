@@ -44,15 +44,15 @@ class Registerstate extends State {
           key: homecontroller.registerFormKey,
           child: Column(
             children: <Widget>[
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 20.0),
-              //   child: Image.asset(
-              //     'assets/images/accept.png',
-              //     height: 300,
-              //   ),
-              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Image.asset(
+                  'assets/image/reg.png',
+                  height: 200,
+                ),
+              ),
               const SizedBox(
-                height: 200,
+                height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),

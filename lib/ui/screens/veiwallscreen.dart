@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_services/ui/screens/discriptionscreen.dart';
 
-class Viewall extends StatelessWidget {
+class Viewall extends StatefulWidget {
   const Viewall({super.key});
 
+  @override
+  State<Viewall> createState() => _ViewallState();
+}
+
+class _ViewallState extends State<Viewall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +31,7 @@ class Viewall extends StatelessWidget {
             crossAxisSpacing: 4.0,
             mainAxisSpacing: 4.0,
           ),
-          itemCount: 11,
+          itemCount: 9,
           itemBuilder: (BuildContext ctx, index) {
             return GestureDetector(
               onTap: () {
@@ -40,11 +45,21 @@ class Viewall extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   elevation: 15,
-                  child:  const Padding(
+                  child: const Padding(
                     padding: EdgeInsets.all(25.0),
                     child: Center(
                       child: Column(
-                        children: <Widget>[Icon(Icons.person), Text('Aneeb')],
+                        children: <Widget>[
+                          // Image.network(
+                          //   product.productImage,
+                          //   height: 30,
+                          //   width: 30,
+                          // ),
+                          // const SizedBox(
+                          //   height: 10,
+                          // ),
+                          // Text(product.productName),
+                        ],
                       ),
                     ),
                   ),

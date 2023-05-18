@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:instant_services/ui/screens/aboutus.dart';
 
 class Mynavbar extends StatefulWidget {
   const Mynavbar({super.key});
@@ -20,12 +22,12 @@ class Mynavbarstate extends State {
           color: Colors.green,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(5), topRight: Radius.circular(5))),
-      child: const Padding(
-        padding: EdgeInsets.only(top: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,
@@ -49,29 +51,34 @@ class Mynavbarstate extends State {
             ),
             // about us
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,
               ),
-              child: Column(
-                children: <Widget>[
-                  Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    'About US',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+              child: InkWell(
+                onTap: () {
+                  Get.to(() => const Aboutscreen());
+                },
+                child: const Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.person,
                       color: Colors.white,
-                      letterSpacing: sqrt1_2,
                     ),
-                  ),
-                ],
+                    Text(
+                      'About US',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        letterSpacing: sqrt1_2,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             // All services
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,

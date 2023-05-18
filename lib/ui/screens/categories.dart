@@ -4,23 +4,20 @@ import 'package:instant_services/models/services_model.dart';
 import 'package:instant_services/ui/screens/discriptionscreen.dart';
 import 'package:instant_services/ui/screens/veiwallscreen.dart';
 
-
-
 class ServiceSection extends StatefulWidget {
   final ServiceModel service;
-  const ServiceSection({Key? key,required this.service}) : super(key: key);
+  const ServiceSection({Key? key, required this.service}) : super(key: key);
 
   @override
   State<ServiceSection> createState() => _CategorySectionState();
 }
 
 class _CategorySectionState extends State<ServiceSection> {
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-// maintanence
+        // maintanence
         _category(widget.service.name, "view All"),
         SizedBox(
           height: 140.0,
@@ -32,7 +29,6 @@ class _CategorySectionState extends State<ServiceSection> {
             },
           ),
         ),
-
       ],
     );
   }
@@ -77,14 +73,18 @@ class _CategorySectionState extends State<ServiceSection> {
             borderRadius: BorderRadius.circular(10),
           ),
           elevation: 15,
-          child:   Padding(
-            padding: EdgeInsets.all(25.0),
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
             child: Center(
               child: Column(
                 children: <Widget>[
-                  Image.network(product.productImage,
-                  height: 20,
-                    width: 20,
+                  Image.network(
+                    product.productImage,
+                    height: 30,
+                    width: 30,
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Text(product.productName),
                 ],

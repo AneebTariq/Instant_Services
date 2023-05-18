@@ -50,16 +50,16 @@ class Loginstate extends State {
             // mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 10.0),
-              //   child: Image.asset(
-              //     'assets/images/accep3.jpg',
-              //     height: 300,
-              //     width: 400,
-              //   ),
-              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Image.asset(
+                  'assets/image/login.png',
+                  height: 300,
+                  width: 400,
+                ),
+              ),
               const SizedBox(
-                height: 200,
+                height: 30,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
