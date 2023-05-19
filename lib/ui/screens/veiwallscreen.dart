@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:instant_services/models/services_model.dart';
 import 'package:instant_services/ui/screens/discriptionscreen.dart';
 
 class Viewall extends StatefulWidget {
-  const Viewall({super.key});
+  const Viewall(List<Product> product, {super.key});
 
   @override
   State<Viewall> createState() => _ViewallState();
@@ -12,6 +13,7 @@ class Viewall extends StatefulWidget {
 class _ViewallState extends State<Viewall> {
   @override
   Widget build(BuildContext context) {
+    List product = Product as List;
     return Scaffold(
 //appbar
       appBar: AppBar(
@@ -31,7 +33,7 @@ class _ViewallState extends State<Viewall> {
             crossAxisSpacing: 4.0,
             mainAxisSpacing: 4.0,
           ),
-          itemCount: 9,
+          itemCount: product.length,
           itemBuilder: (BuildContext ctx, index) {
             return GestureDetector(
               onTap: () {

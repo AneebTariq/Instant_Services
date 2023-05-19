@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_services/ui/screens/addmoreitem.dart';
+import '../../repository/maincontroller.dart';
 
 class Detail extends StatefulWidget {
   const Detail({super.key});
@@ -11,8 +12,12 @@ class Detail extends StatefulWidget {
 }
 
 class Detailstate extends State {
+  Maincontroller maincontroller = Get.put(Maincontroller());
+  String? argument = Get.arguments['product'] ?? 0;
+
   @override
   Widget build(BuildContext context) {
+    // String myname = argument?.product;
     return Scaffold(
 //Bottom Button
       bottomNavigationBar: Container(
@@ -61,6 +66,7 @@ class Detailstate extends State {
             child: TextFormField(
               maxLines: null,
               minLines: 6,
+              controller: maincontroller.servicedetail,
               keyboardType: TextInputType.multiline,
               decoration: InputDecoration(
                 hintText: 'Enter detailes....',
@@ -75,7 +81,7 @@ class Detailstate extends State {
               ),
             ),
           ),
-          const Center(child: Icon(Icons.person)),
+          const Center(child: Text("argument.product")),
 //Add Image option
           Padding(
             padding: const EdgeInsets.only(left: 20, bottom: 20),

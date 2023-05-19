@@ -45,7 +45,9 @@ class _CategorySectionState extends State<ServiceSection> {
           ),
           TextButton(
             onPressed: () {
-              Get.to(() => const Viewall());
+              Get.to(
+                () => Viewall(widget.service.product),
+              );
             },
             child: Text(
               viewAll,
@@ -63,7 +65,8 @@ class _CategorySectionState extends State<ServiceSection> {
   Widget _catagoritem(Product product) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => const Detail());
+        Get.to(() => const Detail(),
+            arguments: {'product': product.productName});
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:instant_services/repository/maincontroller.dart';
 
 class Feedbackscreen extends StatefulWidget {
   const Feedbackscreen({super.key});
@@ -8,6 +10,8 @@ class Feedbackscreen extends StatefulWidget {
 }
 
 class _FeedbackscreenState extends State<Feedbackscreen> {
+  Maincontroller maincontroller = Get.put(Maincontroller());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +29,7 @@ class _FeedbackscreenState extends State<Feedbackscreen> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
+                controller: maincontroller.servicefeedback,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
