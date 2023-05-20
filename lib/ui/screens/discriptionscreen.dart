@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_services/ui/screens/addmoreitem.dart';
+import '../../models/services_model.dart';
 import '../../repository/maincontroller.dart';
 
-class Detail extends StatefulWidget {
-  const Detail({super.key});
+class DetailScreen extends StatefulWidget {
+  final Product product;
+   DetailScreen({required this.product,Key? key}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() {
-    return Detailstate();
-  }
+  State<DetailScreen> createState() => _DetailScreenState();
 }
 
-class Detailstate extends State {
+class _DetailScreenState extends State<DetailScreen> {
+
+
+
+
   Maincontroller maincontroller = Get.put(Maincontroller());
-  String? argument = Get.arguments['product'] ?? 0;
+  //String? argument = Get.arguments['product'] ?? 0;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +86,7 @@ class Detailstate extends State {
               ),
             ),
           ),
-          const Center(child: Text("argument.product")),
+           Center(child: Text(widget.product.productName)),
 //Add Image option
           Padding(
             padding: const EdgeInsets.only(left: 20, bottom: 20),
