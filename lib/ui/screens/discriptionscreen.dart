@@ -105,16 +105,12 @@ class Detailstate extends State {
                             title: ListTile(
                               leading: const Icon(Icons.camera),
                               title: const Text('Open camera'),
-                              onTap: () {
-                                Navigator.of(context).pop();
-                              },
+                              onTap: () {},
                             ),
                             content: ListTile(
                               leading: const Icon(Icons.browse_gallery_rounded),
                               title: const Text('Open gallery'),
-                              onTap: () {
-                                Navigator.of(context).pop();
-                              },
+                              onTap: () {},
                             ),
                             actions: const [],
                           );
