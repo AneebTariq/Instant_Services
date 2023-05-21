@@ -43,7 +43,7 @@ class _DetailScreenState extends State<DetailScreen> {
               onPressed: () {
                 Get.to(() => AddMore(
                       product: widget.product,
-                      myimageurl: imageurl,
+                      myimageurl: maincontroller.imageurl.toString(),
                       detail: maincontroller.servicedetail.text,
                     ));
               },
@@ -115,16 +115,6 @@ class _DetailScreenState extends State<DetailScreen> {
                               leading: const Icon(Icons.camera),
                               title: const Text('Open camera'),
                               onTap: () async {
-                                /*
-                * Step 1. Pick/Capture an image   (image_picker)
-                * Step 2. Upload the image to Firebase storage
-                * Step 3. Get the URL of the uploaded image
-                * Step 4. Store the image URL inside the corresponding
-                *         document of the database.
-                * Step 5. Display the image on the list
-                *
-                * */
-
                                 /*Step 1:Pick image*/
                                 //Install image_picker
                                 //Import the corresponding library
@@ -142,8 +132,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                     .toString();
 
                                 /*Step 2: Upload to Firebase storage*/
-                                //Install firebase_storage
-                                //Import the library
 
                                 //Get a reference to storage root
                                 Reference referenceRoot =
@@ -204,8 +192,9 @@ class _DetailScreenState extends State<DetailScreen> {
                                   await referenceImageToUpload
                                       .putFile(File(file.path));
                                   //Success: get the download URL
-                                  imageurl = await referenceImageToUpload
-                                      .getDownloadURL();
+                                  maincontroller.imageurl =
+                                      await referenceImageToUpload
+                                          .getDownloadURL();
                                 } catch (error) {
                                   //Some error occurred
                                 }

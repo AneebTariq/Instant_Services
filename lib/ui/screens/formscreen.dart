@@ -68,6 +68,7 @@ class _FormdetailState extends State<Formdetail> {
       ),
 // Screen Body
       body: Form(
+        autovalidateMode: AutovalidateMode.always,
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,23 +168,3 @@ class _FormdetailState extends State<Formdetail> {
     );
   }
 }
-
-// text field widget
-// Widget _textfields(String name) {
-//   return Padding(
-//     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-//     child: TextFormField(
-//       decoration: InputDecoration(
-//         labelStyle: const TextStyle(fontSize: 25, color: Colors.green),
-//         hintText: name,
-//         labelText: name,
-//       ),
-//       validator: (value) {
-//         if (value!.isEmpty) {
-//           return 'Please enter some text';
-//         }
-//         return null;
-//       },
-//     ),
-//   );
-

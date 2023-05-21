@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import '../../models/servicerequestmodel.dart';
 import '../../models/services_model.dart';
 import '../../repository/requestrepo.dart';
@@ -81,14 +82,16 @@ class _FinishingScreenState extends State<FinishingScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () async {
-                // insert data to firestore
-                // storeDataInFirestore();
+                String formateddate =
+                    DateFormat.yMMMMd().format(widget.servicedate);
+                String formatedtime = widget.servicetime.format(context);
+                // String formatedtime = widget.servicetime.toString();
                 final request = ServiceRequest(
                   service_name: widget.product.productName,
                   service_image: widget.myimageurl,
                   service_detail: widget.detail,
-                  service_date: widget.servicedate.toString(),
-                  service_time: widget.servicetime.toString(),
+                  service_date: formateddate,
+                  service_time: formatedtime,
                   service_city: widget.city,
                   user_name: widget.name,
                   user_number: widget.number,
