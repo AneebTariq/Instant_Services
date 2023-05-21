@@ -5,7 +5,7 @@ import 'package:instant_services/ui/screens/discriptionscreen.dart';
 
 class Viewall extends StatefulWidget {
   final ServiceModel service;
-   Viewall(this.service, {super.key});
+  Viewall(this.service, {super.key});
 
   @override
   State<Viewall> createState() => _ViewallState();
@@ -14,12 +14,11 @@ class Viewall extends StatefulWidget {
 class _ViewallState extends State<Viewall> {
   @override
   Widget build(BuildContext context) {
-   // List product = Product as List;
     return Scaffold(
 //appbar
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title:  Text(widget.service.name),
+        title: Text(widget.service.name),
         actions: const [
           Icon(Icons.all_inbox_outlined),
           SizedBox(
@@ -38,7 +37,8 @@ class _ViewallState extends State<Viewall> {
           itemBuilder: (BuildContext ctx, index) {
             return GestureDetector(
               onTap: () {
-                Get.to(() =>  DetailScreen( product: widget.service.product[index]));
+                Get.to(
+                    () => DetailScreen(product: widget.service.product[index]));
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -48,8 +48,8 @@ class _ViewallState extends State<Viewall> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   elevation: 15,
-                  child:  Padding(
-                    padding: EdgeInsets.all(5.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,9 +59,6 @@ class _ViewallState extends State<Viewall> {
                             height: 30,
                             width: 30,
                           ),
-                          // const SizedBox(
-                          //   height: 10,
-                          // ),
                           Text(widget.service.product[index].productName),
                         ],
                       ),

@@ -1,41 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:instant_services/ui/screens/home.dart';
 
+import '../../models/services_model.dart';
 import 'orderscreen.dart';
 
 class AddMore extends StatefulWidget {
-  const AddMore({super.key});
+  final Product product;
+  final String? detail;
+  final String myimageurl;
+  const AddMore(
+      {required this.product,
+      required this.myimageurl,
+      required this.detail,
+      Key? key})
+      : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    // ignore: todo
-    // TODO: implement createState
-    return AddMorestate();
-  }
+  State<AddMore> createState() => _AddMorestate();
 }
 
-class AddMorestate extends State {
+class _AddMorestate extends State<AddMore> {
   @override
   Widget build(BuildContext context) {
     // ignore: todo
     // TODO: implement build
+
     return Scaffold(
 //appbar
       appBar: AppBar(
         title: const Text('Add More'),
         backgroundColor: Colors.green,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.to(() => const Myhome());
-            },
-            icon: const Icon(Icons.add),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-        ],
       ),
 // botom button
       bottomNavigationBar: Container(
@@ -54,7 +48,11 @@ class AddMorestate extends State {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () {
-                Get.to(() => const Order());
+                Get.to(() => Order(
+                      product: widget.product,
+                      myimageurl: widget.myimageurl,
+                      detail: widget.detail,
+                    ));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -75,17 +73,57 @@ class AddMorestate extends State {
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: 160,
-              child:  const Card(
+              height: MediaQuery.of(context).size.height,
+              child: Card(
                 elevation: 5,
-                child: Column(
-                  children: <Widget>[
-                    ListTile(
-                      title: Text('Title'),
-                      subtitle: Text('data'),
-                      trailing: Icon(Icons.delete),
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.product.productName,
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 20),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.delete),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: RichText(
+                          text: TextSpan(
+                            style: const TextStyle(
+                                color: Colors.black, fontSize: 16),
+                            children: <TextSpan>[
+                              TextSpan(text: widget.detail!),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                          height: 200,
+                          width: 200,
+                          child: Image.network(widget.myimageurl)),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

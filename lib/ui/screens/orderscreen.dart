@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_services/ui/screens/formscreen.dart';
-
+import '../../models/services_model.dart';
 import 'datetime.dart';
 
-class Order extends StatelessWidget {
-  const Order({super.key});
+class Order extends StatefulWidget {
+  final Product product;
+  final String? detail;
+  final String myimageurl;
+  const Order(
+      {super.key,
+      required this.product,
+      required this.detail,
+      required this.myimageurl});
 
+  @override
+  State<Order> createState() => _OrderState();
+}
+
+class _OrderState extends State<Order> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +48,16 @@ class Order extends StatelessWidget {
                             backgroundColor: Colors.green,
                           ),
                           onPressed: () {
-                            Get.to(() => Formdetail());
+                            DateTime date = DateTime.now();
+                            TimeOfDay time = TimeOfDay.now();
+                            print(date);
+                            Get.to(() => Formdetail(
+                                  detail: widget.detail,
+                                  myimageurl: widget.myimageurl,
+                                  product: widget.product,
+                                  servicedate: date,
+                                  servicetime: time,
+                                ));
                           },
                           child: const Text(
                             'Now ',
@@ -57,7 +78,11 @@ class Order extends StatelessWidget {
                             backgroundColor: Colors.greenAccent,
                           ),
                           onPressed: () {
-                            Get.to(() => const DateandTime());
+                            Get.to(() => DateandTime(
+                                  detail: widget.detail,
+                                  myimageurl: widget.myimageurl,
+                                  product: widget.product,
+                                ));
                           },
                           child: const Text(
                             'Schedule for later ',

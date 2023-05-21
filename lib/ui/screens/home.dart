@@ -76,8 +76,7 @@ class Myhomestate extends State {
                   child: Text('Error: ${snapshot.error}'),
                 );
               } else {
-                return 
-                  ListView(
+                return ListView(
                   children: <Widget>[
 // Search bar
                     Padding(
@@ -144,15 +143,16 @@ class Myhomestate extends State {
                     ),
 
                     ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
                         itemCount: snapshot.data!.length,
-                        itemBuilder:(context,index){
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
-                        child: ServiceSection(service: snapshot.data![index]),
-                      );
-                    } ),
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child:
+                                ServiceSection(service: snapshot.data![index]),
+                          );
+                        }),
                     // ServiceSection(service: snapshot.data![2]),
                     // const SizedBox(
                     //   height: 10,

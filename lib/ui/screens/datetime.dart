@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_services/ui/screens/formscreen.dart';
 
+import '../../models/services_model.dart';
+
 class DateandTime extends StatefulWidget {
-  const DateandTime({super.key});
+  final Product product;
+  final String? detail;
+  final String myimageurl;
+  const DateandTime(
+      {super.key,
+      required this.product,
+      required this.detail,
+      required this.myimageurl});
 
   @override
-  State<StatefulWidget> createState() {
-    return DateandTimestate();
-  }
+  State<DateandTime> createState() => DateandTimestate();
 }
 
-class DateandTimestate extends State {
+class DateandTimestate extends State<DateandTime> {
   //Date picker
   DateTime datetime = DateTime.now();
   void _selectdate() {
@@ -65,7 +72,13 @@ class DateandTimestate extends State {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () {
-                Get.to(() => Formdetail());
+                Get.to(() => Formdetail(
+                      detail: widget.detail,
+                      myimageurl: widget.myimageurl,
+                      product: widget.product,
+                      servicedate: datetime,
+                      servicetime: mytime,
+                    ));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,

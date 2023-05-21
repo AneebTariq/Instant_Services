@@ -6,14 +6,14 @@ class ServiceRequest {
   final String? id;
   final String service_name;
   final String service_image;
-  final String service_detail;
+  final String? service_detail;
   final String service_date;
-  final String service_time;
+  final String? service_time;
   final String service_city;
   final String user_name;
   final String user_number;
   final String user_address;
-  final String user_email;
+  final String? user_email;
 
   const ServiceRequest({
     this.id,

@@ -65,8 +65,7 @@ class _CategorySectionState extends State<ServiceSection> {
   Widget _catagoritem(Product product) {
     return GestureDetector(
       onTap: () {
-        Get.to(() =>  DetailScreen(product:product));
-           // arguments: {'product': product.productName});
+        Get.to(() => DetailScreen(product: product));
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),

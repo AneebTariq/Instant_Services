@@ -5,6 +5,10 @@ import 'package:instant_services/ui/screens/datetime.dart';
 class Maincontroller extends GetxController {
   TextEditingController servicedetail = TextEditingController();
   TextEditingController servicefeedback = TextEditingController();
+  TextEditingController city = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController number = TextEditingController();
   TimeOfDay? selectedtime;
   DateandTime? selecteddate;
 

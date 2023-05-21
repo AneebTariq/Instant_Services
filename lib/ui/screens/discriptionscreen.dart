@@ -1,28 +1,28 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:instant_services/ui/screens/addmoreitem.dart';
 import '../../models/services_model.dart';
 import '../../repository/maincontroller.dart';
 
 class DetailScreen extends StatefulWidget {
   final Product product;
-   DetailScreen({required this.product,Key? key}) : super(key: key);
+
+  const DetailScreen({required this.product, Key? key}) : super(key: key);
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-
-
-
-
   Maincontroller maincontroller = Get.put(Maincontroller());
-  //String? argument = Get.arguments['product'] ?? 0;
+  String imageurl = '';
 
   @override
   Widget build(BuildContext context) {
-    // String myname = argument?.product;
     return Scaffold(
 //Bottom Button
       bottomNavigationBar: Container(
@@ -41,7 +41,11 @@ class _DetailScreenState extends State<DetailScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () {
-                Get.to(() => const AddMore());
+                Get.to(() => AddMore(
+                      product: widget.product,
+                      myimageurl: imageurl,
+                      detail: maincontroller.servicedetail.text,
+                    ));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -86,7 +90,7 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             ),
           ),
-           Center(child: Text(widget.product.productName)),
+          Center(child: Text(widget.product.productName)),
 //Add Image option
           Padding(
             padding: const EdgeInsets.only(left: 20, bottom: 20),
@@ -110,12 +114,102 @@ class _DetailScreenState extends State<DetailScreen> {
                             title: ListTile(
                               leading: const Icon(Icons.camera),
                               title: const Text('Open camera'),
-                              onTap: () {},
+                              onTap: () async {
+                                /*
+                * Step 1. Pick/Capture an image   (image_picker)
+                * Step 2. Upload the image to Firebase storage
+                * Step 3. Get the URL of the uploaded image
+                * Step 4. Store the image URL inside the corresponding
+                *         document of the database.
+                * Step 5. Display the image on the list
+                *
+                * */
+
+                                /*Step 1:Pick image*/
+                                //Install image_picker
+                                //Import the corresponding library
+
+                                ImagePicker imagePicker = ImagePicker();
+                                XFile? file = await imagePicker.pickImage(
+                                    source: ImageSource.camera);
+                                print('${file?.path}');
+
+                                if (file == null) return;
+                                //Import dart:core
+                                // ignore: unused_local_variable
+                                String uniqueFileName = DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString();
+
+                                /*Step 2: Upload to Firebase storage*/
+                                //Install firebase_storage
+                                //Import the library
+
+                                //Get a reference to storage root
+                                Reference referenceRoot =
+                                    FirebaseStorage.instance.ref();
+                                Reference referenceDirImages =
+                                    referenceRoot.child('images');
+
+                                //Create a reference for the image to be stored
+                                Reference referenceImageToUpload =
+                                    referenceDirImages.child('name');
+
+                                //Handle errors/success
+                                try {
+                                  //Store the file
+                                  await referenceImageToUpload
+                                      .putFile(File(file.path));
+                                  //Success: get the download URL
+                                  imageurl = await referenceImageToUpload
+                                      .getDownloadURL();
+                                } catch (error) {
+                                  //Some error occurred
+                                }
+                              },
                             ),
                             content: ListTile(
                               leading: const Icon(Icons.browse_gallery_rounded),
                               title: const Text('Open gallery'),
-                              onTap: () {},
+                              onTap: () async {
+                                ImagePicker imagePicker = ImagePicker();
+                                XFile? file = await imagePicker.pickImage(
+                                    source: ImageSource.gallery);
+                                print('${file?.path}');
+
+                                if (file == null) return;
+                                //Import dart:core
+                                // ignore: unused_local_variable
+                                String uniqueFileName = DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString();
+
+                                /*Step 2: Upload to Firebase storage*/
+                                //Install firebase_storage
+                                //Import the library
+
+                                //Get a reference to storage root
+                                Reference referenceRoot =
+                                    FirebaseStorage.instance.ref();
+                                Reference referenceDirImages =
+                                    referenceRoot.child('images');
+
+                                //Create a reference for the image to be stored
+                                Reference referenceImageToUpload =
+                                    referenceDirImages.child('name');
+
+                                //Handle errors/success
+                                try {
+                                  //Store the file
+                                  await referenceImageToUpload
+                                      .putFile(File(file.path));
+                                  //Success: get the download URL
+                                  imageurl = await referenceImageToUpload
+                                      .getDownloadURL();
+                                } catch (error) {
+                                  //Some error occurred
+                                }
+                              },
                             ),
                             actions: const [],
                           );
