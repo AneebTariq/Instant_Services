@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:instant_services/ui/screens/categories.dart';
 import 'package:instant_services/ui/widgets/drawer.dart';
-import 'package:instant_services/ui/widgets/navbar.dart';
 import '../../models/services_model.dart';
 
 class Myhome extends StatefulWidget {
@@ -62,7 +61,7 @@ class Myhomestate extends State {
 // user profile drawer
         drawer: mydrawer,
 // Bottom Navigation bar
-        bottomNavigationBar: const Mynavbar(),
+        //  bottomNavigationBar: const Mynavbar(),
 //screen body
         body: FutureBuilder<List<ServiceModel>>(
             future: fetchData(),

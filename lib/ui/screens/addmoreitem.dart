@@ -28,7 +28,7 @@ class _AddMorestate extends State<AddMore> {
     return Scaffold(
 //appbar
       appBar: AppBar(
-        title: const Text('Add More'),
+        title: const Text('Review Details'),
         backgroundColor: Colors.green,
       ),
 // botom button

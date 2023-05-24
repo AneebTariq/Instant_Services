@@ -48,17 +48,19 @@ class _FormdetailState extends State<Formdetail> {
               style: TextStyle(fontSize: 20),
             ),
             onPressed: () {
-              Get.to(() => FinishingScreen(
-                    address: maincotroller.address.text,
-                    product: widget.product,
-                    myimageurl: widget.myimageurl,
-                    detail: widget.detail,
-                    servicedate: widget.servicedate,
-                    servicetime: widget.servicetime,
-                    city: maincotroller.city.text,
-                    name: maincotroller.name.text,
-                    number: maincotroller.number.text,
-                  ));
+              if (_formKey.currentState!.validate()) {
+                Get.to(() => FinishingScreen(
+                      address: maincotroller.address.text,
+                      product: widget.product,
+                      myimageurl: widget.myimageurl,
+                      detail: widget.detail,
+                      servicedate: widget.servicedate,
+                      servicetime: widget.servicetime,
+                      city: maincotroller.city.text,
+                      name: maincotroller.name.text,
+                      number: maincotroller.number.text,
+                    ));
+              }
             },
           )),
 //Appbar
@@ -67,102 +69,107 @@ class _FormdetailState extends State<Formdetail> {
         backgroundColor: Colors.green,
       ),
 // Screen Body
-      body: Form(
-        autovalidateMode: AutovalidateMode.always,
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              child: TextFormField(
-                controller: maincotroller.name,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(fontSize: 25, color: Colors.green),
-                  hintText: 'Enter name',
-                  labelText: 'Name',
+      body: SingleChildScrollView(
+        child: Form(
+          autovalidateMode: AutovalidateMode.always,
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: TextFormField(
+                  controller: maincotroller.name,
+                  decoration: const InputDecoration(
+                    labelStyle: TextStyle(fontSize: 25, color: Colors.green),
+                    hintText: 'Enter name',
+                    labelText: 'Name',
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              child: TextFormField(
-                controller: maincotroller.number,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(fontSize: 25, color: Colors.green),
-                  hintText: 'Enter Number',
-                  labelText: 'Number',
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: TextFormField(
+                  controller: maincotroller.number,
+                  decoration: const InputDecoration(
+                    labelStyle: TextStyle(fontSize: 25, color: Colors.green),
+                    hintText: 'Enter Number',
+                    labelText: 'Number',
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
               ),
-            ),
-//Text field for city
-            const SizedBox(
-              height: 10,
-            ),
+              //Text field for city
+              const SizedBox(
+                height: 10,
+              ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              child: TextFormField(
-                controller: maincotroller.city,
-                decoration: const InputDecoration(
-                  labelStyle: TextStyle(fontSize: 25, color: Colors.green),
-                  hintText: 'Enter city name',
-                  labelText: 'City',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 20),
-              child: Text(
-                'Address',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.green,
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: TextFormField(
+                  controller: maincotroller.city,
+                  decoration: const InputDecoration(
+                    labelStyle: TextStyle(fontSize: 25, color: Colors.green),
+                    hintText: 'Enter city name',
+                    labelText: 'City',
+                  ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 15, right: 20),
-              child: TextFormField(
-                maxLines: null,
-                minLines: 6,
-                controller: maincotroller.address,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                  hintText: 'Enter Address....',
-                  hintStyle: const TextStyle(color: Colors.black87),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.green)),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.green),
-                    borderRadius: BorderRadius.circular(10),
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0, top: 20),
+                child: Text(
+                  'Address',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.green,
                   ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, top: 15, right: 20),
+                child: TextFormField(
+                  maxLines: null,
+                  minLines: 6,
+                  controller: maincotroller.address,
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Address....',
+                    hintStyle: const TextStyle(color: Colors.black87),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.green)),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -11,7 +11,7 @@ class Maincontroller extends GetxController {
   TextEditingController number = TextEditingController();
   TimeOfDay? selectedtime;
   DateandTime? selecteddate;
-  String? imageurl;
+  String imageurl = '';
 
   @override
   void onInit() {

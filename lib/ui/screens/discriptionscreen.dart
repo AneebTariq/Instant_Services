@@ -43,7 +43,7 @@ class _DetailScreenState extends State<DetailScreen> {
               onPressed: () {
                 Get.to(() => AddMore(
                       product: widget.product,
-                      myimageurl: maincontroller.imageurl.toString(),
+                      myimageurl: maincontroller.imageurl,
                       detail: maincontroller.servicedetail.text,
                     ));
               },
@@ -69,7 +69,7 @@ class _DetailScreenState extends State<DetailScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-//Text Field for Discreption
+          //Text Field for Discreption
           Padding(
             padding: const EdgeInsets.only(left: 20.0, top: 15, right: 20),
             child: TextFormField(
@@ -91,7 +91,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
           ),
           Center(child: Text(widget.product.productName)),
-//Add Image option
+          //Add Image option
           Padding(
             padding: const EdgeInsets.only(left: 20, bottom: 20),
             child: Column(
@@ -149,11 +149,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                   await referenceImageToUpload
                                       .putFile(File(file.path));
                                   //Success: get the download URL
-                                  imageurl = await referenceImageToUpload
-                                      .getDownloadURL();
+                                  maincontroller.imageurl =
+                                      await referenceImageToUpload
+                                          .getDownloadURL();
                                 } catch (error) {
                                   //Some error occurred
                                 }
+                                // ignore: use_build_context_synchronously
                               },
                             ),
                             content: ListTile(
@@ -198,6 +200,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 } catch (error) {
                                   //Some error occurred
                                 }
+                                // ignore: use_build_context_synchronously
                               },
                             ),
                             actions: const [],

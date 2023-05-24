@@ -97,6 +97,7 @@ class _FinishingScreenState extends State<FinishingScreen> {
                   user_number: widget.number,
                   user_address: widget.address,
                   user_email: email,
+                  status: 'pending',
                 );
                 await Servicerepository().CreateDonor(request);
 

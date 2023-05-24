@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instant_services/ui/screens/Auth/login.dart';
+import 'package:instant_services/ui/screens/aboutus.dart';
+import 'package:instant_services/ui/screens/activeorder.dart';
+import 'package:instant_services/ui/screens/history.dart';
 import 'package:instant_services/ui/screens/messages.dart';
 
 import '../../shared_pref/shared_prefrence.dart';
@@ -28,6 +31,27 @@ var mydrawer = Drawer(
         title: const Text('H O M E'),
         onTap: () {
           Get.offAll(() => const Myhome());
+        },
+      ),
+      ListTile(
+        leading: const Icon(Icons.person),
+        title: const Text('A B O U T   U S'),
+        onTap: () {
+          Get.to(() => const Aboutscreen());
+        },
+      ),
+      ListTile(
+        leading: const Icon(Icons.timeline),
+        title: const Text('A C T I V E   O R  D E R'),
+        onTap: () {
+          Get.to(() => const ActiveOrder());
+        },
+      ),
+      ListTile(
+        leading: const Icon(Icons.timer_sharp),
+        title: const Text('H I S T O R Y'),
+        onTap: () {
+          Get.to(() => const ServiceHistory());
         },
       ),
       ListTile(
