@@ -27,7 +27,7 @@ class Mynavbarstate extends State {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            const Padding(
+             Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,
@@ -59,7 +59,7 @@ class Mynavbarstate extends State {
                 onTap: () {
                   Get.to(() => const Aboutscreen());
                 },
-                child: const Column(
+                child:  Column(
                   children: <Widget>[
                     Icon(
                       Icons.person,
@@ -78,7 +78,7 @@ class Mynavbarstate extends State {
               ),
             ),
             // All services
-            const Padding(
+             Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 10.0,

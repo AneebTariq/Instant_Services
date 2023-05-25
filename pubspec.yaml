@@ -33,6 +33,7 @@ dependencies:
     sdk: flutter
   badges: ^2.0.3
   carousel_slider: ^4.2.1
+  firebase_database:
   get: ^4.6.5
   firebase_auth: ^4.2.10
   firebase_core: ^2.7.1
