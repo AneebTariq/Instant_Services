@@ -54,6 +54,16 @@ class DateandTimestate extends State<DateandTime> {
       appBar: AppBar(
         title: const Text('Date And Time'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
       //botum sheet
       bottomNavigationBar: Container(

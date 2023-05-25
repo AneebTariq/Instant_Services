@@ -63,6 +63,16 @@ class _DetailScreenState extends State<DetailScreen> {
       appBar: AppBar(
         title: const Text('Discribe Problem'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
 //Body of screen
       body: Column(

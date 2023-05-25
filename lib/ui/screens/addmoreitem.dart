@@ -30,6 +30,16 @@ class _AddMorestate extends State<AddMore> {
       appBar: AppBar(
         title: const Text('Review Details'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
 // botom button
       bottomNavigationBar: Container(

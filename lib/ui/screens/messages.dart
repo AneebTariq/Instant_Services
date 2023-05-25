@@ -15,15 +15,50 @@ class _MessagescreenState extends State<Messagescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Service Requests'),
+        title: const Text('Messages'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
-      bottomNavigationBar: IconButton(icon: Icon(Icons.chat_bubble_outline_outlined,color: Colors.blue,),onPressed: (){
-
-
-        Get.to(()=>OrderChatPage(requestId: 1,theirName: "Admin",));
-
-      },),
+      // bottomNavigationBar: IconButton(
+      //   icon: const Icon(
+      //     Icons.chat_bubble_outline_outlined,
+      //     color: Colors.blue,
+      //   ),
+      //   onPressed: () {
+      //     Get.to(() => const OrderChatPage(
+      //           requestId: 1,
+      //           theirName: "Admin",
+      //         ));
+      //   },
+      // ),
+      body: Stack(
+        children: [
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: FloatingActionButton(
+              onPressed: () {
+                Get.to(() => const OrderChatPage(
+                      requestId: 1,
+                      theirName: "Admin",
+                    ));
+              },
+              tooltip: 'Chat',
+              backgroundColor: Colors.green,
+              child: const Icon(Icons.chat_bubble_outline_outlined),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

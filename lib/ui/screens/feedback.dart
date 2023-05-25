@@ -18,6 +18,16 @@ class _FeedbackscreenState extends State<Feedbackscreen> {
       appBar: AppBar(
         title: const Text('Give Feedback'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(

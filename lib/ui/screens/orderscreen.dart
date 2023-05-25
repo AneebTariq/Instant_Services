@@ -26,6 +26,16 @@ class _OrderState extends State<Order> {
         appBar: AppBar(
           backgroundColor: Colors.green,
           title: const Text('Schedule your service'),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Get.back();
+            },
+          ),
+          centerTitle: true,
         ),
 //Bottom button
         bottomNavigationBar: Container(

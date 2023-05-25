@@ -11,12 +11,14 @@ class OrderChatPage extends StatefulWidget {
   static const _paddingChatField = 8.0;
   final int requestId;
   final String theirName;
-  OrderChatPage({
+  const OrderChatPage({
+    super.key,
     required this.requestId,
     required this.theirName,
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _OrderChatPageState createState() => _OrderChatPageState();
 }
 
@@ -35,22 +37,28 @@ class _OrderChatPageState extends State<OrderChatPage> {
   }
 
   getUser() async {
-    user=await SharedPrefClient().getUser();
+    user = await SharedPrefClient().getUser();
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(icon: Icon(Icons.arrow_back_ios,color: Colors.black,),onPressed: (){
-            Get.back();
-          },),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Get.back();
+            },
+          ),
           centerTitle: true,
-          title: Text(widget.theirName,style: TextStyle(
-            color: Colors.black
-          ),),
-          backgroundColor: Colors.white,
+          title: Text(
+            widget.theirName,
+            style: const TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.green,
           elevation: 2,
         ),
         body: StreamBuilder<List<ChatMsgModel>>(
@@ -59,7 +67,7 @@ class _OrderChatPageState extends State<OrderChatPage> {
             if (snapshot2.hasData) {
               return _buildContent(context, snapshot2.data!, user!.userId);
             }
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           },
@@ -71,9 +79,9 @@ class _OrderChatPageState extends State<OrderChatPage> {
     final chatList = data.reversed.toList();
     final textTheme = Theme.of(context).textTheme;
     final chatFieldBorder = OutlineInputBorder(
-      borderSide: BorderSide(
+      borderSide: const BorderSide(
         width: 1,
-        color: Colors.blue,
+        color: Colors.green,
       ),
       borderRadius: BorderRadius.circular(25.0),
     );
@@ -81,7 +89,7 @@ class _OrderChatPageState extends State<OrderChatPage> {
       children: [
         Expanded(
           child: ListView.builder(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: _insetM,
             ),
             reverse: true,
@@ -120,11 +128,11 @@ class _OrderChatPageState extends State<OrderChatPage> {
                 ),
               ),
               GestureDetector(
-                child: SizedBox(
+                child: const SizedBox(
                   width: 48,
                   child: Icon(
                     Icons.send,
-                    color: Colors.blue,
+                    color: Colors.green,
                     size: 20,
                   ),
                 ),
@@ -146,15 +154,15 @@ class _OrderChatPageState extends State<OrderChatPage> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width * 0.4,
-              padding: EdgeInsets.all(_insetM),
+              padding: const EdgeInsets.all(_insetM),
               child: Text(
                 msg,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                 ),
               ),
-              decoration: BoxDecoration(
-                color:Colors.blue,
+              decoration: const BoxDecoration(
+                color: Colors.blue,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(OrderChatPage._bubbleRadius),
                   topRight: Radius.circular(OrderChatPage._bubbleRadius),
@@ -162,7 +170,7 @@ class _OrderChatPageState extends State<OrderChatPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2,
             ),
             Text(
@@ -182,17 +190,16 @@ class _OrderChatPageState extends State<OrderChatPage> {
     if (msg.isNotEmpty) {
       await _dbClient
           .sendMessageOrderChat(
-          widget.requestId,
-          ChatMsgModel(
-            message: msg,
-            receiverId: widget.requestId.toString(),
-            senderId: userId.toString(),
-            dateAndTime: DateTime.now().toString(),
-
-          ))
+              widget.requestId,
+              ChatMsgModel(
+                message: msg,
+                receiverId: widget.requestId.toString(),
+                senderId: userId.toString(),
+                dateAndTime: DateTime.now().toString(),
+              ))
           .whenComplete(() async {
         _chatController.clear();
-       // await Repository().sendMessage(msg);
+        // await Repository().sendMessage(msg);
       });
     }
   }
@@ -205,15 +212,15 @@ class _OrderChatPageState extends State<OrderChatPage> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width * 0.4,
-              padding: EdgeInsets.all(_insetM),
+              padding: const EdgeInsets.all(_insetM),
               child: Text(
                 msg,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                 ),
               ),
-              decoration: BoxDecoration(
-                color: Colors.grey,
+              decoration: const BoxDecoration(
+                color: Colors.green,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(OrderChatPage._bubbleRadius),
                   topRight: Radius.circular(OrderChatPage._bubbleRadius),
@@ -221,7 +228,7 @@ class _OrderChatPageState extends State<OrderChatPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2,
             ),
             Text(

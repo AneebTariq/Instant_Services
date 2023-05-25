@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Aboutscreen extends StatelessWidget {
   const Aboutscreen({super.key});
@@ -9,6 +10,16 @@ class Aboutscreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('About Us'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
       body: Column(
         children: [

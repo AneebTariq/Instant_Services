@@ -67,6 +67,16 @@ class _FormdetailState extends State<Formdetail> {
       appBar: AppBar(
         title: const Text('Location'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
 // Screen Body
       body: SingleChildScrollView(

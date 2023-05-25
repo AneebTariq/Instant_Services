@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ActiveOrder extends StatefulWidget {
@@ -31,18 +32,28 @@ class _ActiveOrderState extends State<ActiveOrder> {
 
   @override
   Widget build(BuildContext context) {
-    String myaccepter = myString;
+    String myuser = myString;
     String mystatus = 'pending';
     final Query<Map<String, dynamic>> usersCollection = FirebaseFirestore
         .instance
         .collection('ServiceRequest')
-        .where('User_email', isEqualTo: myaccepter)
+        .where('User_email', isEqualTo: myuser)
         .where('status', isEqualTo: mystatus);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Active Order'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: usersCollection.snapshots(),
@@ -74,6 +85,7 @@ class _ActiveOrderState extends State<ActiveOrder> {
                                 snapshot.data!.docs[index]['service_name']),
                             subtitle: Text('service Date and Time: ' +
                                 snapshot.data!.docs[index]['service_date'] +
+                                '  ' +
                                 snapshot.data!.docs[index]['service_time']),
                           ),
                           // Text('User_email: ' +

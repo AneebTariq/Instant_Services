@@ -19,12 +19,16 @@ class _ViewallState extends State<Viewall> {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text(widget.service.name),
-        actions: const [
-          Icon(Icons.all_inbox_outlined),
-          SizedBox(
-            width: 20,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
           ),
-        ],
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
 // screen body
       body: GridView.builder(

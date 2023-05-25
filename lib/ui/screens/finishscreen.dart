@@ -64,6 +64,16 @@ class _FinishingScreenState extends State<FinishingScreen> {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text(' Process Complete'),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
 //Bottom button
       bottomNavigationBar: Container(
@@ -82,6 +92,7 @@ class _FinishingScreenState extends State<FinishingScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () async {
+                String mystatus = 'pending';
                 String formateddate =
                     DateFormat.yMMMMd().format(widget.servicedate);
                 String formatedtime = widget.servicetime.format(context);
@@ -97,7 +108,7 @@ class _FinishingScreenState extends State<FinishingScreen> {
                   user_number: widget.number,
                   user_address: widget.address,
                   user_email: email,
-                  status: 'pending',
+                  status: mystatus,
                 );
                 await Servicerepository().CreateDonor(request);
 

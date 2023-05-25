@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ServiceHistory extends StatefulWidget {
@@ -43,6 +44,16 @@ class _ServiceHistoryState extends State<ServiceHistory> {
       appBar: AppBar(
         title: const Text('Request History'),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: usersCollection.snapshots(),
