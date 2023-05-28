@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -125,10 +127,6 @@ class _DetailScreenState extends State<DetailScreen> {
                               leading: const Icon(Icons.camera),
                               title: const Text('Open camera'),
                               onTap: () async {
-                                /*Step 1:Pick image*/
-                                //Install image_picker
-                                //Import the corresponding library
-
                                 ImagePicker imagePicker = ImagePicker();
                                 XFile? file = await imagePicker.pickImage(
                                     source: ImageSource.camera);
@@ -183,10 +181,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                 String uniqueFileName = DateTime.now()
                                     .millisecondsSinceEpoch
                                     .toString();
-
-                                /*Step 2: Upload to Firebase storage*/
-                                //Install firebase_storage
-                                //Import the library
 
                                 //Get a reference to storage root
                                 Reference referenceRoot =

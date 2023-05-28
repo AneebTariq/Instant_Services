@@ -38,7 +38,7 @@ class _ServiceHistoryState extends State<ServiceHistory> {
     final Query<Map<String, dynamic>> usersCollection = FirebaseFirestore
         .instance
         .collection('ServiceRequest')
-        .where('User_email', isEqualTo: myaccepter);
+        .where('user_email', isEqualTo: myaccepter);
 
     return Scaffold(
       appBar: AppBar(

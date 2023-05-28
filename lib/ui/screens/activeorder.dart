@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ActiveOrder extends StatefulWidget {
   const ActiveOrder({super.key});
@@ -12,32 +12,16 @@ class ActiveOrder extends StatefulWidget {
 }
 
 class _ActiveOrderState extends State<ActiveOrder> {
-  String myString = '';
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  Future<SharedPreferences> getSharedPreferencesInstance() async {
-    return await SharedPreferences.getInstance();
-  }
-
-  Future<void> getData() async {
-    SharedPreferences prefs = await getSharedPreferencesInstance();
-    myString = prefs.getString('email') ?? '';
-    setState(() {});
-  }
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
-    String myuser = myString;
+    String? myuser = user!.email;
     String mystatus = 'pending';
     final Query<Map<String, dynamic>> usersCollection = FirebaseFirestore
         .instance
         .collection('ServiceRequest')
-        .where('User_email', isEqualTo: myuser)
+        .where('user_email', isEqualTo: myuser)
         .where('status', isEqualTo: mystatus);
 
     return Scaffold(
