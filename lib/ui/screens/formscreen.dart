@@ -90,6 +90,7 @@ class _FormdetailState extends State<Formdetail> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: TextFormField(
+                  keyboardType: TextInputType.name,
                   controller: maincotroller.name,
                   decoration: const InputDecoration(
                     labelStyle: TextStyle(fontSize: 25, color: Colors.green),
@@ -108,6 +109,7 @@ class _FormdetailState extends State<Formdetail> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: maincotroller.number,
                   decoration: const InputDecoration(
                     labelStyle: TextStyle(fontSize: 25, color: Colors.green),
@@ -131,6 +133,7 @@ class _FormdetailState extends State<Formdetail> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 child: TextFormField(
+                  keyboardType: TextInputType.name,
                   controller: maincotroller.city,
                   decoration: const InputDecoration(
                     labelStyle: TextStyle(fontSize: 25, color: Colors.green),
