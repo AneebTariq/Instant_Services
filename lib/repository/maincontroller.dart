@@ -9,6 +9,7 @@ class Maincontroller extends GetxController {
   TextEditingController address = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController number = TextEditingController();
+
   TimeOfDay? selectedtime;
   DateandTime? selecteddate;
   String imageurl = '';
