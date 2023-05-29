@@ -7,7 +7,7 @@ import '../models/chat_model.dart';
 class FirebaseDbClient {
   final _chatDb = FirebaseDatabase.instance.reference().child('chat');
 
-  Stream<List<ChatMsgModel>> getOrderChat(int requestId) {
+  Stream<List<ChatMsgModel>> getOrderChat(String requestId) {
     bool responseReceived = false;
     final subscription =
     _chatDb.child(_getOrderRef(requestId)).onValue.map((event) {
@@ -19,7 +19,7 @@ class FirebaseDbClient {
       chat?.sort(
               (msg1, msg2) => msg1.dateAndTime!.compareTo(msg2.dateAndTime!));
       return chat ?? [];
-    }).timeout(Duration(seconds: 10), onTimeout: (sink) {
+    }).timeout(const Duration(seconds: 10), onTimeout: (sink) {
       if (!responseReceived) {
         throw (TimeoutException('No Stream event'));
       }
@@ -27,7 +27,7 @@ class FirebaseDbClient {
     return subscription;
   }
 
-  Future<void> sendMessageOrderChat(int requestId, ChatMsgModel msg) async {
+  Future<void> sendMessageOrderChat(String requestId, ChatMsgModel msg) async {
     _chatDb.child(_getOrderRef(requestId)).push().set(msg.toJson());
   }
 
@@ -50,5 +50,5 @@ class FirebaseDbClient {
   //   print("resp " + resp.toString());
   // }
 
-  String _getOrderRef(int requestId) => 'Chat_No_$requestId';
+  String _getOrderRef(String requestId) => 'Chat_No_$requestId';
 }

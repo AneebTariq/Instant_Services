@@ -9,7 +9,7 @@ class OrderChatPage extends StatefulWidget {
   static const _bubbleGap = 40.0;
   static const _bubbleRadius = 25.0;
   static const _paddingChatField = 8.0;
-  final int requestId;
+  final String requestId;
   final String theirName;
   const OrderChatPage({
     super.key,
