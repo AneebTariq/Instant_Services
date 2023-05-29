@@ -15,6 +15,7 @@ class ServiceRequest {
   final String user_address;
   final String? user_email;
   final String status;
+  final String uId;
 
   const ServiceRequest({
     this.id,
@@ -29,6 +30,7 @@ class ServiceRequest {
     required this.user_name,
     required this.user_number,
     required this.status,
+    required this.uId,
   });
   tojason() {
     return {
@@ -43,6 +45,7 @@ class ServiceRequest {
       'user_name': user_name,
       'user_number': user_number,
       'status': status,
+      'uId':uId
     };
   }
 
@@ -62,6 +65,7 @@ class ServiceRequest {
       user_name: data['user_name'],
       user_number: data['user_number'],
       status: data['status'],
+      uId: data['uid']
     );
   }
 }
