@@ -78,27 +78,27 @@ class Myhomestate extends State {
                 return ListView(
                   children: <Widget>[
 // Search bar
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0,
-                        vertical: 15.0,
-                      ),
-                      child: TextField(
-                        keyboardType: TextInputType.name,
-                        decoration: InputDecoration(
-                          hintText: 'Enter Services that you want....',
-                          hintStyle: const TextStyle(color: Colors.black87),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide:
-                                  const BorderSide(color: Colors.green)),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.green),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //     horizontal: 20.0,
+                    //     vertical: 15.0,
+                    //   ),
+                    //   child: TextField(
+                    //     keyboardType: TextInputType.name,
+                    //     decoration: InputDecoration(
+                    //       hintText: 'Enter Services that you want....',
+                    //       hintStyle: const TextStyle(color: Colors.black87),
+                    //       focusedBorder: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(30),
+                    //           borderSide:
+                    //               const BorderSide(color: Colors.green)),
+                    //       enabledBorder: OutlineInputBorder(
+                    //         borderSide: const BorderSide(color: Colors.green),
+                    //         borderRadius: BorderRadius.circular(30),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
 // offer card
                     const Padding(
                       padding: EdgeInsets.only(bottom: 5),

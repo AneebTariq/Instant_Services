@@ -17,7 +17,7 @@ class _ActiveOrderState extends State<ActiveOrder> {
   @override
   Widget build(BuildContext context) {
     String? myuser = user!.email;
-    String mystatus = 'pending';
+    String mystatus = 'aproved';
     final Query<Map<String, dynamic>> usersCollection = FirebaseFirestore
         .instance
         .collection('ServiceRequest')
@@ -72,8 +72,6 @@ class _ActiveOrderState extends State<ActiveOrder> {
                                 '  ' +
                                 snapshot.data!.docs[index]['service_time']),
                           ),
-                          // Text('User_email: ' +
-                          //     snapshot.data!.docs[index]['User_email']),
                         ],
                       ),
                     ),

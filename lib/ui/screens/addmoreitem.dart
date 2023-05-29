@@ -100,10 +100,6 @@ class _AddMorestate extends State<AddMore> {
                               style: const TextStyle(
                                   color: Colors.black, fontSize: 20),
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.delete),
-                            ),
                           ],
                         ),
                       ),
