@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:instant_services/shared_pref/shared_prefrence.dart';
 import 'package:intl/intl.dart';
 import '../../models/servicerequestmodel.dart';
 import '../../models/services_model.dart';
@@ -92,6 +93,7 @@ class _FinishingScreenState extends State<FinishingScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () async {
+                var uId=await SharedPrefClient().getUser();
                 String mystatus = 'pending';
                 String formateddate =
                     DateFormat.yMMMMd().format(widget.servicedate);
@@ -109,6 +111,7 @@ class _FinishingScreenState extends State<FinishingScreen> {
                   user_address: widget.address,
                   user_email: email,
                   status: mystatus,
+                  uId:uId.userId
                 );
                 await Servicerepository().CreateDonor(request);
 
