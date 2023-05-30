@@ -7,8 +7,8 @@ import 'finishscreen.dart';
 
 class Formdetail extends StatefulWidget {
   final Product product;
-  final String? detail;
-  final String myimageurl;
+  final String detail;
+  final String? myimageurl;
   final DateTime servicedate;
   final TimeOfDay servicetime;
   const Formdetail({
@@ -52,7 +52,7 @@ class _FormdetailState extends State<Formdetail> {
                 Get.to(() => FinishingScreen(
                       address: maincotroller.address.text,
                       product: widget.product,
-                      myimageurl: widget.myimageurl,
+                      myimageurl: widget.myimageurl!,
                       detail: widget.detail,
                       servicedate: widget.servicedate,
                       servicetime: widget.servicetime,

@@ -12,7 +12,7 @@ class Maincontroller extends GetxController {
 
   TimeOfDay? selectedtime;
   DateandTime? selecteddate;
-  String imageurl = '';
+  String? imageurl = '';
 
   @override
   void onInit() {

@@ -6,8 +6,8 @@ import 'orderscreen.dart';
 
 class AddMore extends StatefulWidget {
   final Product product;
-  final String? detail;
-  final String myimageurl;
+  final String detail;
+  final String? myimageurl;
   const AddMore(
       {required this.product,
       required this.myimageurl,
@@ -60,7 +60,7 @@ class _AddMorestate extends State<AddMore> {
               onPressed: () {
                 Get.to(() => Order(
                       product: widget.product,
-                      myimageurl: widget.myimageurl,
+                      myimageurl: widget.myimageurl!,
                       detail: widget.detail,
                     ));
               },
@@ -113,7 +113,7 @@ class _AddMorestate extends State<AddMore> {
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 16),
                             children: <TextSpan>[
-                              TextSpan(text: widget.detail!),
+                              TextSpan(text: widget.detail),
                             ],
                           ),
                         ),
@@ -124,7 +124,7 @@ class _AddMorestate extends State<AddMore> {
                       SizedBox(
                           height: 200,
                           width: 200,
-                          child: Image.network(widget.myimageurl)),
+                          child: Image.network(widget.myimageurl!)),
                       const SizedBox(
                         height: 10,
                       ),

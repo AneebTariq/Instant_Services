@@ -21,7 +21,7 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   Maincontroller maincontroller = Get.put(Maincontroller());
-  String imageurl = '';
+  // String imageurl = '';
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _DetailScreenState extends State<DetailScreen> {
               onPressed: () {
                 Get.to(() => AddMore(
                       product: widget.product,
-                      myimageurl: maincontroller.imageurl,
+                      myimageurl: maincontroller.imageurl!,
                       detail: maincontroller.servicedetail.text,
                     ));
               },

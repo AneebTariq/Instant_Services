@@ -6,8 +6,8 @@ import '../../models/services_model.dart';
 
 class DateandTime extends StatefulWidget {
   final Product product;
-  final String? detail;
-  final String myimageurl;
+  final String detail;
+  final String? myimageurl;
   const DateandTime(
       {super.key,
       required this.product,
@@ -84,7 +84,7 @@ class DateandTimestate extends State<DateandTime> {
               onPressed: () {
                 Get.to(() => Formdetail(
                       detail: widget.detail,
-                      myimageurl: widget.myimageurl,
+                      myimageurl: widget.myimageurl!,
                       product: widget.product,
                       servicedate: datetime,
                       servicetime: mytime,

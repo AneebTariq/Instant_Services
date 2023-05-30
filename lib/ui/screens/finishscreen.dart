@@ -11,8 +11,8 @@ import 'home.dart';
 
 class FinishingScreen extends StatefulWidget {
   final Product product;
-  final String? detail;
-  final String myimageurl;
+  final String detail;
+  final String? myimageurl;
   final DateTime servicedate;
   final TimeOfDay servicetime;
   final String city;
@@ -93,26 +93,25 @@ class _FinishingScreenState extends State<FinishingScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: ElevatedButton(
               onPressed: () async {
-                var uId=await SharedPrefClient().getUser();
+                var uId = await SharedPrefClient().getUser();
                 String mystatus = 'pending';
                 String formateddate =
                     DateFormat.yMMMMd().format(widget.servicedate);
                 String formatedtime = widget.servicetime.format(context);
                 // String formatedtime = widget.servicetime.toString();
                 final request = ServiceRequest(
-                  service_name: widget.product.productName,
-                  service_image: widget.myimageurl,
-                  service_detail: widget.detail,
-                  service_date: formateddate,
-                  service_time: formatedtime,
-                  service_city: widget.city,
-                  user_name: widget.name,
-                  user_number: widget.number,
-                  user_address: widget.address,
-                  user_email: email,
-                  status: mystatus,
-                  uId:uId.userId
-                );
+                    service_name: widget.product.productName,
+                    service_image: widget.myimageurl!,
+                    service_detail: widget.detail,
+                    service_date: formateddate,
+                    service_time: formatedtime,
+                    service_city: widget.city,
+                    user_name: widget.name,
+                    user_number: widget.number,
+                    user_address: widget.address,
+                    user_email: email,
+                    status: mystatus,
+                    uId: uId.userId);
                 await Servicerepository().CreateDonor(request);
 
                 Get.to(() => const Myhome());
