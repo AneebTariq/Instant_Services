@@ -43,7 +43,7 @@ class Aboutscreen extends StatelessWidget {
                   padding: EdgeInsets.all(10.0),
                   child: Text(
                     'Welcome to INSTANT SERVICES, your go-to solution for all your home service needs. Whether you need a plumber, electrician, cleaner, or any other home service professional, we have got you covered. With our easy-to-use app, you can find trusted and reliable service providers in your area with just a few taps on your smartphone.',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 14),
                   ),
                 ),
               ),
@@ -60,7 +60,7 @@ class Aboutscreen extends StatelessWidget {
                   child: RichText(
                     text: const TextSpan(
                       text: 'At ',
-                      style: TextStyle(color: Colors.black, fontSize: 18),
+                      style: TextStyle(color: Colors.black, fontSize: 14),
                       children: <TextSpan>[
                         TextSpan(
                             text: 'INSTANT SERVICES,',
@@ -85,7 +85,7 @@ class Aboutscreen extends StatelessWidget {
                   padding: EdgeInsets.all(10.0),
                   child: Text(
                     'Our mission is to simplify your life by connecting you with qualified professionals who can cater to your home service needs efficiently and affordably. We carefully vet each service provider on our platform, ensuring that they possess the necessary skills, qualifications, and experience to deliver top-notch services. We believe in quality, reliability, and customer satisfaction.',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 14),
                   ),
                 ),
               ),
@@ -136,7 +136,7 @@ class Aboutscreen extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Text(
             text,
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 14),
           ),
         ),
       ),

@@ -28,7 +28,7 @@ class _AddMorestate extends State<AddMore> {
     return Scaffold(
 //appbar
       appBar: AppBar(
-        title: const Text('Review Details'),
+        title: const Text('Problem Detail'),
         backgroundColor: Colors.green,
         leading: IconButton(
           icon: const Icon(
@@ -77,67 +77,103 @@ class _AddMorestate extends State<AddMore> {
         ),
       ),
 //Body of screen listview
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Card(
-                elevation: 5,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              widget.product.productName,
-                              style: const TextStyle(
-                                  color: Colors.black, fontSize: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: RichText(
-                          text: TextSpan(
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 16),
-                            children: <TextSpan>[
-                              TextSpan(text: widget.detail),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: Card(
+                  elevation: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            children: [
+                              Text("Selected Service: ",
+                                style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                              ),
+                              Text(widget.product.productName,
+                                style: TextStyle(fontSize: 16),
+                              ),
                             ],
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                          height: 200,
-                          width: 200,
-                          child: Image.network(widget.myimageurl!)),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            children: [
+                              Text("Problem Description: ",
+                                style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                              ),
+
+
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Text(widget.detail,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        //   child: RichText(
+                        //     text: TextSpan(
+                        //       style: const TextStyle(
+                        //           color: Colors.black, fontSize: 16),
+                        //       children: <TextSpan>[
+                        //         TextSpan(text: widget.detail),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Text("Problem Image: ",
+                            style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Center(
+                          child: SizedBox(
+                              height: 200,
+                              width: 200,
+                              child: widget.myimageurl!= ''
+                                  ? Image.network(widget.myimageurl!)
+                                  : Placeholder(),
+
+                              //Image.network(widget.myimageurl!)),
+                        )),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          // const Spacer(
-          //   flex: 2,
-          // ),
-        ],
+            // const Spacer(
+            //   flex: 2,
+            // ),
+          ],
+        ),
       ),
     );
   }

@@ -63,7 +63,8 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
 //Appbar
       appBar: AppBar(
-        title: const Text('Discribe Problem'),
+        title: const Text(''
+            'Describe Problem'),
         backgroundColor: Colors.green,
         leading: IconButton(
           icon: const Icon(
@@ -77,152 +78,210 @@ class _DetailScreenState extends State<DetailScreen> {
         centerTitle: true,
       ),
 //Body of screen
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          //Text Field for Discreption
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, top: 15, right: 20),
-            child: TextFormField(
-              maxLines: null,
-              minLines: 6,
-              controller: maincontroller.servicedetail,
-              keyboardType: TextInputType.multiline,
-              decoration: InputDecoration(
-                hintText: 'Enter detailes....',
-                hintStyle: const TextStyle(color: Colors.black87),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.green)),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.green),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+          child: Column(
+            //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              //Text Field for Discreption
+
+              Row(
+                children: [
+                  Text(
+                    "Selected Service: ",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    widget.product.productName,
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
               ),
-            ),
-          ),
-          Center(child: Text(widget.product.productName)),
-          //Add Image option
-          Padding(
-            padding: const EdgeInsets.only(left: 20, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const Text(
-                  'Add Image',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                SizedBox(
-                  child: GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            contentPadding: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            title: ListTile(
-                              leading: const Icon(Icons.camera),
-                              title: const Text('Open camera'),
-                              onTap: () async {
-                                ImagePicker imagePicker = ImagePicker();
-                                XFile? file = await imagePicker.pickImage(
-                                    source: ImageSource.camera);
-                                print('${file?.path}');
 
-                                if (file == null) return;
-                                //Import dart:core
-                                // ignore: unused_local_variable
-                                String uniqueFileName = DateTime.now()
-                                    .millisecondsSinceEpoch
-                                    .toString();
+              SizedBox(
+                height: 20,
+              ),
 
-                                /*Step 2: Upload to Firebase storage*/
-
-                                //Get a reference to storage root
-                                Reference referenceRoot =
-                                    FirebaseStorage.instance.ref();
-                                Reference referenceDirImages =
-                                    referenceRoot.child('images');
-
-                                //Create a reference for the image to be stored
-                                Reference referenceImageToUpload =
-                                    referenceDirImages.child('name');
-
-                                //Handle errors/success
-                                try {
-                                  //Store the file
-                                  await referenceImageToUpload
-                                      .putFile(File(file.path));
-                                  //Success: get the download URL
-                                  maincontroller.imageurl =
-                                      await referenceImageToUpload
-                                          .getDownloadURL();
-                                } catch (error) {
-                                  //Some error occurred
-                                }
-                                // ignore: use_build_context_synchronously
-                              },
-                            ),
-                            content: ListTile(
-                              leading: const Icon(Icons.browse_gallery_rounded),
-                              title: const Text('Open gallery'),
-                              onTap: () async {
-                                ImagePicker imagePicker = ImagePicker();
-                                XFile? file = await imagePicker.pickImage(
-                                    source: ImageSource.gallery);
-                                print('${file?.path}');
-
-                                if (file == null) return;
-                                //Import dart:core
-                                // ignore: unused_local_variable
-                                String uniqueFileName = DateTime.now()
-                                    .millisecondsSinceEpoch
-                                    .toString();
-
-                                //Get a reference to storage root
-                                Reference referenceRoot =
-                                    FirebaseStorage.instance.ref();
-                                Reference referenceDirImages =
-                                    referenceRoot.child('images');
-
-                                //Create a reference for the image to be stored
-                                Reference referenceImageToUpload =
-                                    referenceDirImages.child('name');
-
-                                //Handle errors/success
-                                try {
-                                  //Store the file
-                                  await referenceImageToUpload
-                                      .putFile(File(file.path));
-                                  //Success: get the download URL
-                                  maincontroller.imageurl =
-                                      await referenceImageToUpload
-                                          .getDownloadURL();
-                                } catch (error) {
-                                  //Some error occurred
-                                }
-                                // ignore: use_build_context_synchronously
-                              },
-                            ),
-                            actions: const [],
-                          );
-                        },
-                      );
-                    },
-                    child: const Icon(
-                      Icons.image,
-                      color: Colors.grey,
-                      size: 40,
-                    ),
+              Text(
+                "Detail: ",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              TextFormField(
+                maxLines: null,
+                minLines: 6,
+                controller: maincontroller.servicedetail,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  hintText: 'Enter Detail....',
+                  hintStyle: const TextStyle(color: Colors.black87),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.green)),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.green),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-              ],
-            ),
+              ),
+              // Center(child: Text(widget.product.productName)),
+              //Add Image option
+              SizedBox(
+                height: 25,
+              ),
+              Stack(
+                alignment: Alignment.bottomRight,
+                children: [
+                  Center(
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 200,
+                      width: 200,
+                      child: maincontroller.imageurl != ''
+                          ? Image.network(maincontroller.imageurl!)
+                          : Placeholder(),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                                contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 5,
+                                ),
+                                title: Column(children: [
+                                  GestureDetector(
+                                    onTap: () async {
+                                      ImagePicker imagePicker = ImagePicker();
+                                      XFile? file = await imagePicker.pickImage(
+                                          source: ImageSource.camera);
+                                      print('${file?.path}');
+
+                                      if (file == null) return;
+                                      //Import dart:core
+                                      // ignore: unused_local_variable
+                                      String uniqueFileName = DateTime.now()
+                                          .millisecondsSinceEpoch
+                                          .toString();
+
+                                      /*Step 2: Upload to Firebase storage*/
+
+                                      //Get a reference to storage root
+                                      Reference referenceRoot =
+                                          FirebaseStorage.instance.ref();
+                                      Reference referenceDirImages =
+                                          referenceRoot.child('images');
+
+                                      //Create a reference for the image to be stored
+                                      Reference referenceImageToUpload =
+                                          referenceDirImages.child('name');
+
+                                      //Handle errors/success
+                                      try {
+                                        //Store the file
+                                        await referenceImageToUpload
+                                            .putFile(File(file.path));
+
+                                        //Success: get the download URL
+                                        maincontroller.imageurl =
+                                            await referenceImageToUpload
+                                                .getDownloadURL();
+
+                                        //Navigator.of(context).pop();
+                                        setState(() {});
+                                      } catch (error) {
+                                        //Some error occurred
+                                      }
+                                      // ignore: use_build_context_synchronously
+                                    },
+                                    child: Row(
+                                      children: const [
+                                        Icon(Icons.camera),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text('Open Camera',
+                                        style: TextStyle(fontWeight: FontWeight.normal,
+                                        fontSize: 14
+                                        ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      ImagePicker imagePicker = ImagePicker();
+                                      XFile? file = await imagePicker.pickImage(
+                                          source: ImageSource.gallery);
+                                      print('${file?.path}');
+
+                                      if (file == null) return;
+                                      //Import dart:core
+                                      // ignore: unused_local_variable
+                                      String uniqueFileName = DateTime.now()
+                                          .millisecondsSinceEpoch
+                                          .toString();
+
+                                      //Get a reference to storage root
+                                      Reference referenceRoot =
+                                          FirebaseStorage.instance.ref();
+                                      Reference referenceDirImages =
+                                          referenceRoot.child('images');
+
+                                      //Create a reference for the image to be stored
+                                      Reference referenceImageToUpload =
+                                          referenceDirImages.child('name');
+
+                                      //Handle errors/success
+                                      try {
+                                        //Store the file
+                                        await referenceImageToUpload
+                                            .putFile(File(file.path));
+                                        //Success: get the download URL
+                                        maincontroller.imageurl =
+                                            await referenceImageToUpload
+                                                .getDownloadURL();
+                                        setState(() {});
+                                      } catch (error) {
+                                        //Some error occurred
+                                      }
+                                    },
+                                    child: Row(
+                                      children: const [
+                                        Icon(Icons.browse_gallery),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text('Open Gallery',
+                            style: TextStyle(fontWeight: FontWeight.normal,
+                            fontSize: 14
+                            ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ]));
+                          });
+                    },
+                    icon: Icon(Icons.add_a_photo),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

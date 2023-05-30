@@ -93,7 +93,7 @@ class _FormdetailState extends State<Formdetail> {
                   keyboardType: TextInputType.name,
                   controller: maincotroller.name,
                   decoration: const InputDecoration(
-                    labelStyle: TextStyle(fontSize: 25, color: Colors.green),
+                    labelStyle: TextStyle(fontSize: 20, color: Colors.green),
                     hintText: 'Enter name',
                     labelText: 'Name',
                   ),
@@ -112,7 +112,7 @@ class _FormdetailState extends State<Formdetail> {
                   keyboardType: TextInputType.number,
                   controller: maincotroller.number,
                   decoration: const InputDecoration(
-                    labelStyle: TextStyle(fontSize: 25, color: Colors.green),
+                    labelStyle: TextStyle(fontSize: 20, color: Colors.green),
                     hintText: 'Enter Number',
                     labelText: 'Number',
                   ),
@@ -136,7 +136,7 @@ class _FormdetailState extends State<Formdetail> {
                   keyboardType: TextInputType.name,
                   controller: maincotroller.city,
                   decoration: const InputDecoration(
-                    labelStyle: TextStyle(fontSize: 25, color: Colors.green),
+                    labelStyle: TextStyle(fontSize: 20, color: Colors.green),
                     hintText: 'Enter city name',
                     labelText: 'City',
                   ),
@@ -153,7 +153,7 @@ class _FormdetailState extends State<Formdetail> {
                 child: Text(
                   'Address',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.green,
                   ),
                 ),
@@ -167,7 +167,7 @@ class _FormdetailState extends State<Formdetail> {
                   maxLines: null,
                   minLines: 6,
                   controller: maincotroller.address,
-                  keyboardType: TextInputType.multiline,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     hintText: 'Enter Address....',
                     hintStyle: const TextStyle(color: Colors.black87),
