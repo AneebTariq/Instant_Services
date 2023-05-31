@@ -89,26 +89,26 @@ class _DetailScreenState extends State<DetailScreen> {
 
               Row(
                 children: [
-                  Text(
+                  const Text(
                     "Selected Service: ",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.product.productName,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
-              Text(
+              const Text(
                 "Detail: ",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               TextFormField(
@@ -130,7 +130,7 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
               // Center(child: Text(widget.product.productName)),
               //Add Image option
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Stack(
@@ -143,7 +143,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       width: 200,
                       child: maincontroller.imageurl != ''
                           ? Image.network(maincontroller.imageurl!)
-                          : Placeholder(),
+                          : const Placeholder(),
                     ),
                   ),
                   IconButton(
@@ -200,16 +200,17 @@ class _DetailScreenState extends State<DetailScreen> {
                                       }
                                       // ignore: use_build_context_synchronously
                                     },
-                                    child: Row(
-                                      children: const [
+                                    child: const Row(
+                                      children: [
                                         Icon(Icons.camera),
                                         SizedBox(
                                           width: 15,
                                         ),
-                                        Text('Open Camera',
-                                        style: TextStyle(fontWeight: FontWeight.normal,
-                                        fontSize: 14
-                                        ),
+                                        Text(
+                                          'Open Camera',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 14),
                                         ),
                                       ],
                                     ),
@@ -255,16 +256,17 @@ class _DetailScreenState extends State<DetailScreen> {
                                         //Some error occurred
                                       }
                                     },
-                                    child: Row(
-                                      children: const [
+                                    child: const Row(
+                                      children: [
                                         Icon(Icons.browse_gallery),
                                         SizedBox(
                                           width: 15,
                                         ),
-                                        Text('Open Gallery',
-                            style: TextStyle(fontWeight: FontWeight.normal,
-                            fontSize: 14
-                            ),
+                                        Text(
+                                          'Open Gallery',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 14),
                                         ),
                                       ],
                                     ),
@@ -272,11 +274,11 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ]));
                           });
                     },
-                    icon: Icon(Icons.add_a_photo),
+                    icon: const Icon(Icons.add_a_photo),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
             ],

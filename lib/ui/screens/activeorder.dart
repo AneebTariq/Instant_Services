@@ -63,8 +63,36 @@ class _ActiveOrderState extends State<ActiveOrder> {
                         children: [
                           ListTile(
                             textColor: Colors.black,
-                            trailing:
-                                Text(snapshot.data!.docs[index]['status']),
+                            trailing: ElevatedButton(
+                              onPressed: () {
+                                String requeststatus = 'Cencel';
+                                String mydate =
+                                    snapshot.data!.docs[index]['service_date'];
+                                String mytime =
+                                    snapshot.data!.docs[index]['service_time'];
+                                // String myemail =
+                                //     snapshot.data!.docs[index]['user_email'];
+                                FirebaseFirestore.instance
+                                    .collection('ServiceRequest')
+                                    .where('service_date', isEqualTo: mydate)
+                                    .where('service_time', isEqualTo: mytime)
+                                    .where('user_email', isEqualTo: myuser)
+                                    .get()
+                                    .then((querySnapshot) {
+                                  querySnapshot.docs
+                                      // ignore: avoid_function_literals_in_foreach_calls
+                                      .forEach((documentSnapshot) {
+                                    documentSnapshot.reference
+                                        .update({'status': requeststatus});
+                                  });
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.redAccent,
+                              ),
+                              child: const Text('Cencel Service'),
+                            ),
+                            // Text(snapshot.data!.docs[index]['status']),
                             title: Text('Service_name: ' +
                                 snapshot.data!.docs[index]['service_name']),
                             subtitle: Text('service Date and Time: ' +
